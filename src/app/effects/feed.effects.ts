@@ -68,7 +68,7 @@ export class FeedEffects {
             console.log(err);
             return of(
               FeedActions.updateError({
-                payload: { error: 'Could not load Rss Feed' },
+                payload: { error: 'Oops! Could not load RSS Feed. Please try again.' },
               }),
               FeedActions.deleteFeed({
                 payload: { rssUrl: err.url },

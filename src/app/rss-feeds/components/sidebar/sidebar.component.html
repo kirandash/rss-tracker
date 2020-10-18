@@ -3,7 +3,7 @@
     <input
       appInputChange
       type="text"
-      placeholder="Copy Rss Feed Url and press enter"
+      placeholder="Type RSS feed URL and press enter"
     />
   </div>
   <ul class="channel-list">
@@ -13,7 +13,7 @@
         [ngClass]="{ active: activeFeed === channel?.rssUrl }"
         (click)="showArticles(channel?.rssUrl)"
       >
-        <span class="delete" (click)="deleteFeed(channel?.rssUrl)">x</span>
+        <span class="delete" (click)="deleteFeed(channel?.rssUrl)"><i class="fas fa-trash-alt"></i></span>
         <div class="channel-item">
           <div class="logo">
             <img
@@ -25,7 +25,9 @@
           </div>
           <div class="info">
             <div class="title">{{ channel?.title }}</div>
-            <div class="description">{{ channel?.description }}</div>
+            <div class="description">
+              {{ (channel?.description.length>6)? (channel?.description | slice:0:100)+'...':(channel?.description) }}
+            </div>
           </div>
         </div>
       </li>

@@ -1,10 +1,10 @@
 {
   "copyright": "Copyright 2018 Fairfax Media",
-  "description": "The top News headlines from The BBC Network. For all the news, visit https://www.smh.com.au",
+  "description": "This is not a real feed. Data is loaded from JSON file to demo live update of new and deleted news.",
   "image": {
     "link": "https://www.smh.com.au/rssheadlines",
     "title": "BBC Network - Latest News",
-    "url": "https://www.smh.com.au/icons/rss/smh.png"
+    "url": "https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif"
   },
   "language": "en-AU",
   "lastBuildDate": "Fri, 16 Oct 2020 04:30:11 +1100",
