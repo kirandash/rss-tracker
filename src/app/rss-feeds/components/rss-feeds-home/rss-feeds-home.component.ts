@@ -18,7 +18,7 @@ import * as FeedAction from '../../../actions/feed.actions';
 })
 export class RssFeedsHomeComponent implements OnInit {
   feeds$: Observable<AppState>;
-  channels: Array<Feed>;
+  channels: Array<Feed> = [];
   activeFeed: string;
   error: string;
   constructor(private store: Store<{ feeds: AppState }>) {
@@ -36,7 +36,10 @@ export class RssFeedsHomeComponent implements OnInit {
    */
   subscribeToStore(): void {
     this.feeds$.pipe(distinctUntilChanged()).subscribe((res) => {
-      this.channels = res.rssFeeds;
+      if (res.feedUrls.length !== this.channels.length) {
+        this.channels = res.rssFeeds;
+      }
+
       this.activeFeed = res.activeFeed;
       this.error = res.error;
       if (this.error) {

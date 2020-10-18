@@ -45,17 +45,7 @@ const reducer = createReducer(
           return temp;
         });
 
-      const newResult = activeArticles.item
-        .filter((o1) => {
-          return !stateArticles.some((o2) => {
-            return o1.guid === o2.guid;
-          });
-        })
-        .map((resObj) => {
-          const temp = { ...resObj };
-          temp.status = 'new';
-          return temp;
-        });
+      const newResult = getNewArticles(activeArticles, stateArticles);
 
       const oldResult = stateArticles.filter((o1) => {
         return activeArticles.item.some((o2) => {
@@ -78,10 +68,14 @@ const reducer = createReducer(
         return 0;
       });
 
-      return {
-        ...state,
-        articles: { ...state.articles, [state.activeFeed]: updateArticles },
-      };
+      if (newResult.length > 0) {
+        return {
+          ...state,
+          articles: { ...state.articles, [state.activeFeed]: updateArticles },
+        };
+      } else {
+        return state;
+      }
     } else if (activeArticles) {
       const articles = [...activeArticles.item];
       articles.sort((a, b) => {
@@ -110,6 +104,14 @@ const reducer = createReducer(
     return { ...state, activeFeed: payload.activeFeed, newFeedUrl: '' };
   }),
   on(FeedActions.feedsLoaded, (state, { payload }) => {
+    const activeArticles = payload.find((feed) => {
+      return feed.rssUrl === state.activeFeed;
+    });
+    const stateArticles = state.articles[state.activeFeed] || [];
+    const newResults = getNewArticles(activeArticles, stateArticles, true);
+    if (newResults.length === 0) {
+      return state;
+    }
     return { ...state, rssFeeds: payload };
   }),
   on(FeedActions.addNewFeedUrl, (state, { payload }) => {
@@ -121,18 +123,24 @@ const reducer = createReducer(
   }),
   on(FeedActions.deleteFeed, (state, { payload }) => {
     const feedUrls = [...state.feedUrls];
-    const index = feedUrls.indexOf(payload.rssUrl);
+    let { rssUrl } = { ...payload };
+    const originIndex = rssUrl.indexOf(location.origin);
+    if (originIndex !== -1) {
+      rssUrl = rssUrl.split(location.origin + '/')[1];
+    }
+    const index = feedUrls.indexOf(rssUrl);
+    console.log('deleted feed', rssUrl);
     feedUrls.splice(index, 1);
     const rssFeeds = [...state.rssFeeds];
     const rssFeedIndex = rssFeeds.findIndex((rssFeed) => {
-      return rssFeed.rssUrl === payload.rssUrl;
+      return rssFeed.rssUrl === rssUrl;
     });
     let activeFeed = state.activeFeed;
     const articles = { ...state.articles };
     if (rssFeedIndex !== -1) {
       rssFeeds.splice(index, 1);
     }
-    if (state.activeFeed === payload.rssUrl) {
+    if (state.activeFeed === rssUrl) {
       activeFeed = (rssFeeds.length && rssFeeds[0].rssUrl) || '';
       delete articles[state.activeFeed];
     }
@@ -147,6 +155,27 @@ const reducer = createReducer(
     };
   })
 );
+
+const getNewArticles = (activeArticles, stateArticles, fromLoadFeeds?) => {
+  let newResult = [];
+  if (activeArticles) {
+    newResult = activeArticles.item
+      .filter((o1) => {
+        return !stateArticles.some((o2) => {
+          return o1.guid === o2.guid;
+        });
+      })
+      .map((resObj) => {
+        const temp = { ...resObj };
+        temp.status = 'new';
+        return temp;
+      });
+  } else if (fromLoadFeeds) {
+    newResult.push('some data');
+  }
+
+  return newResult;
+};
 
 export const FeedReducer = (state: AppState, action: Action): AppState => {
   return reducer(state, action);

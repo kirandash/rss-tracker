@@ -9,7 +9,7 @@ export class InputChangeDirective {
   constructor(private store: Store) {}
   @HostListener('keyup', ['$event'])
   _handleValueChange(event): void {
-    if (event.which === 13) {
+    if (event.which === 13 && event.target.value) {
       this.onChange(event.target.value);
       event.target.value = '';
     }

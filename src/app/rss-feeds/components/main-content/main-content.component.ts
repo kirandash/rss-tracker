@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { AppState, Article } from 'src/app/models/app-state';
 import * as FeedAction from '../../../actions/feed.actions';
 
@@ -18,8 +19,10 @@ export class MainContentComponent implements OnInit {
      * after successful subscription it will read articles form state and copy it to
      * property
      */
-    this.store.select('feeds').subscribe((res) => {
-      this.articles = res.articles[res.activeFeed];
-    });
+    this.store
+      .pipe(select('feeds'), distinctUntilChanged())
+      .subscribe((res) => {
+        this.articles = res.articles[res.activeFeed];
+      });
   }
 }
