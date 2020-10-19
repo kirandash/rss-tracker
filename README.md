@@ -38,6 +38,7 @@ This project is all about media monitoring. A lot of media currently is hosted o
 1. **Lazy Loading**: The [home page](http://bgwebagency.in/projects/ui/rss-tracker/) will load only the App module. And the [RSS Feed screen](http://bgwebagency.in/projects/ui/rss-tracker/#/rss-feeds) has been created using another module called rss-feeds. Thus making sure that the app loads faster on first load and load the rss-feeds module only on visiting rssfeeds screen.
 2. **Live Update**: On [rss feed page](http://bgwebagency.in/projects/ui/rss-tracker/#/rss-feeds), all the added rss feeds will be tracked every 3 seconds to check if any new news has been deleted or added. And the deleted or added feed will be shown with an extra status text on top right corner.
 3. **Performance Check**: The live update feature is implemented by hitting the APIs every 3 seconds. But the code is written to make sure that the DOM re-renders only if there is any new data in the API. If the data in API and store is same: then DOM is not re-rendered thus improving DOM performance.
+4. **Directive**: Created custom directive called `InputChangeDirective` to add custom onChange behavior for input field and demonstrate how directives can be created and used.
 
 ## Dev Setup
 
