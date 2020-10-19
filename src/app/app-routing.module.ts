@@ -8,7 +8,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'rssfeeds',
+    path: 'rss-feeds',
     loadChildren: () =>
       import('./rss-feeds/rss-feeds.module').then((m) => m.RssFeedsModule),
   },

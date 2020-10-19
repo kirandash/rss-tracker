@@ -48,7 +48,7 @@ describe('RssFeedsService', () => {
 
   it('should call load feeds', () => {
     service.getRSSFeeds().subscribe((res) => {
-      console.log(res);
+      if(res && res.data)
       expect(res.data.feedUrl).toEqual(URL_FEED);
     });
   });

@@ -11,8 +11,7 @@ import * as FeedActions from '../actions/feed.actions';
 export const intialState: AppState = {
   feedUrls: [
     'https://www.smh.com.au/rss/feed.xml',
-    'assets/mocks/mock.feed.json',
-    'https://gadgets.ndtv.com/rss/polls/feeds',
+    'assets/mocks/mock.feed.json'
   ],
   newFeedUrl: '',
   rssFeeds: [],
@@ -52,8 +51,6 @@ const reducer = createReducer(
           return o1.guid === o2.guid;
         });
       });
-
-      console.log(oldResult);
 
       const updateArticles = [...newResult, ...deletedResult, ...oldResult];
       updateArticles.sort((a, b) => {
@@ -129,7 +126,6 @@ const reducer = createReducer(
       rssUrl = rssUrl.split(location.origin + '/')[1];
     }
     const index = feedUrls.indexOf(rssUrl);
-    console.log('deleted feed', rssUrl);
     feedUrls.splice(index, 1);
     const rssFeeds = [...state.rssFeeds];
     const rssFeedIndex = rssFeeds.findIndex((rssFeed) => {

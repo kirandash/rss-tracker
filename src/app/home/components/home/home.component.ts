@@ -12,6 +12,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   public goToRSSFeeds(): void {
-    this.router.navigate(['rssfeeds']);
+    this.router.navigate(['rss-feeds']);
   }
 }

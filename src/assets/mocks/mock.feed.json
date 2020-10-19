@@ -3,14 +3,14 @@
   "description": "This is not a real feed. Data is loaded from JSON file to demo live update of new and deleted news.",
   "image": {
     "link": "https://www.smh.com.au/rssheadlines",
-    "title": "BBC Network - Latest News",
+    "title": "BBC Network - Dummy News",
     "url": "https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif"
   },
   "language": "en-AU",
   "lastBuildDate": "Fri, 16 Oct 2020 04:30:11 +1100",
   "link": "https://www.smh.com.au/rssheadlines",
   "pubDate": "Fri, 16 Oct 2020 04:30:11 +1100",
-  "title": "BBC Network - Latest News",
+  "title": "BBC Network - Dummy News",
   "item": [
     {
       "dc:creator": "",

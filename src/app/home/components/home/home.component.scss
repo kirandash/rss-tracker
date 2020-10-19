@@ -4,15 +4,29 @@
     height: 100%;
     justify-content: center;
     align-items: center;
-    .title {
-        font-size: 24px;
-        font-weight: 600;
-    }
-    .naviation-container {
-        .goto-rss {
-            color: blue;
-            cursor: pointer;
+    .wrapper {
+        position: relative;
+        top: -43px;
+        text-align: center;
+        .title {
+            font-size: 80px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .naviation-container {
+            .goto-rss {
+                display: block;
+                margin-top: 20px;
+                color: #175bdf;
+                cursor: pointer;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

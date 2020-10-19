@@ -31,7 +31,6 @@ export class SidebarComponent implements OnInit {
    */
   showArticles(id): void {
     this.activeFeed = id;
-    console.log(id);
     this.store.dispatch(
       FeedAction.updateActiveFeed({ payload: { activeFeed: id } })
     );

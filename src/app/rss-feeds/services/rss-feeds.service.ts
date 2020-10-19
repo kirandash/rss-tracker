@@ -16,8 +16,7 @@ export class RssFeedsService {
   ) {
     this.urls$ = store.pipe(select('feeds'));
     this.urls$.subscribe((res) => {
-      this.urlList = res.feedUrls;
-      console.log(res);
+      this.urlList = res ? res.feedUrls : [];
     });
   }
 
