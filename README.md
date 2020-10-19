@@ -13,17 +13,18 @@ This project is all about media monitoring. A lot of media currently is hosted o
 
 ## Live Demo
 
-1. Click [here](http://bgwebagency.in/projects/ui/rss-tracker/) to check the live Demo of the application.
-2. Visit the [rss feed page](http://bgwebagency.in/projects/ui/rss-tracker/#/rss-feeds). It will show 2 feeds by default which are already being tracked by default.
+1. Click [here](https://youtu.be/zzkXnwZUDZE) to watch the Demo video where I have explained how the App works and important features implemented. Or please read through the documentation below.
+2. Click [here](http://bgwebagency.in/projects/ui/rss-tracker/) to check the live Demo of the application.
+3. Visit the [rss feed page](http://bgwebagency.in/projects/ui/rss-tracker/#/rss-feeds). It will show 2 feeds by default which are already being tracked by default.
     * SMH real time feed from: https://www.smh.com.au/rss/feed.xml and
     * Dummy feed from: `assets/mocks/mock.feed.json` to demonstrate real time update and delete of news.
-3. Try adding NDTV feed: https://gadgets.ndtv.com/rss/polls/feeds to the list of feeds and on adding, the app will start tracking news from NDTV with checking of live updates for every 3 seconds.
-4. You can remove the existing or new feeds from the list by clicking the trash icon.
-5. List of working feeds: Copy paste the below URLs into search field to see
+4. Try adding NDTV feed: https://gadgets.ndtv.com/rss/polls/feeds to the list of feeds and on adding, the app will start tracking news from NDTV with checking of live updates for every 3 seconds.
+5. You can remove the existing or new feeds from the list by clicking the trash icon.
+6. List of working feeds: Copy paste the below URLs into search field to see
     * SMH Feed: https://www.smh.com.au/rss/feed.xml
     * NDTV Feed: https://gadgets.ndtv.com/rss/polls/feeds
     * Dummy Feed: `assets/mocks/mock.feed.json`
-6. Note: For demo, many RSS feeds are not working because of CORS not being allowed for the APIs. And if any API could not be loaded: the App will show an error message.
+7. **Note**: For demo, many RSS feeds are not working because of CORS not being allowed for the APIs. And if any API could not be loaded: the App will show an error message.
 
 ## Tech Used
 
