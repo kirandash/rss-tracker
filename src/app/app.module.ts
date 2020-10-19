@@ -9,7 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FeedEffects } from 'src/app/effects/feed.effects';
 import { FeedReducer } from 'src/app/reducers/feed.reducers';
-import { CommonModule } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
     StoreModule.forRoot({ feeds: FeedReducer }),
     EffectsModule.forRoot([FeedEffects]),
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
